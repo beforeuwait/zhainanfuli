@@ -43,6 +43,9 @@ HEADERS = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
 }
 
+# Pool 进程数
+POOL = 10
+
 
 def image_list_generator():
     for i in open(IMAGE_LIST, 'r', encoding='utf-8'):
@@ -50,7 +53,7 @@ def image_list_generator():
 
 
 def downloader():
-    pool = Pool(10)     # 10个进程采集
+    pool = Pool(POOL) 
     for i in image_list_generator():
         if not os.path.exists('./{}/{}'.format(i[0], i[1])):
             os.mkdir('./{}/{}'.format(i[0], i[1]))
