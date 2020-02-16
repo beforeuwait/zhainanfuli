@@ -11,8 +11,9 @@
     保存具体的项目
 """
 
-import requests
+import os
 import time
+import requests
 from lxml import etree
 
 
@@ -72,6 +73,9 @@ def get_all_categories():
     遍历每个分类里的找到所有的集合
     """
     for item, link in URL_DICT.items():
+        if not os.path.exists('./{}'.format(item)):
+            # 按照每个分类创建文件夹
+            os.mkdir('./{}'.format(item))
         get_all_pages(item, link)
 
 
