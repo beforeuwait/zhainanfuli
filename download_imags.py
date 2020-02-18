@@ -62,26 +62,44 @@ def downloader():
     pool.join()
 
 
+def check_existed_image(path):
+    is_ok = False
+    if os.path.exists(path):
+        print('已存在:\t', path)
+        with open(path, 'rb') as f:
+            ctx = f.read()
+            if ctx.endswith(b'\xd9'):
+                is_ok = True
+    return is_ok
+
+
+def check_download_image(ctx):
+    return ctx.endswith(b'\xd9')
+
+
 def download_img(info):
     cate = info[0]
     title = info[1]
     url = info[2]
     name = info[2].split('-')[1]
-    retry = 3
-    print(cate, title, name)
-    while retry > 0:
-        try:
-            resp = requests.get(url=url, headers=HEADERS, proxies=PROXIES, timeout=10) \
-                if PROXIES \
-                else requests.get(url=url, headers=HEADERS, timeout=10)
-            if resp.status_code < 300:
-                html = resp.content
-                # 保存图片
-                with open('./{}/{}/{}'.format(cate, title, name), 'wb') as f:
-                    f.write(html)
-                break
-        except Exception as e:
-            print('请求出错\t{0}'.format(e))
+    is_existed = check_existed_image('./{}/{}/{}'.format(cate, title, name))
+    if not is_existed:
+        retry = 3
+        print('开始下载:\t', cate, title, name)
+        while retry > 0:
+            try:
+                resp = requests.get(url=url, headers=HEADERS, proxies=PROXIES, timeout=10) \
+                    if PROXIES \
+                    else requests.get(url=url, headers=HEADERS, timeout=10)
+                if resp.status_code < 300:
+                    html = resp.content
+                    if check_download_image(html):
+                        # 保存图片
+                        with open('./{}/{}/{}'.format(cate, title, name), 'wb') as f:
+                            f.write(html)
+                        break
+            except Exception as e:
+                print('请求出错\t{0}'.format(e))
             retry -= 1
 
 
