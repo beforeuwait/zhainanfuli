@@ -30,7 +30,7 @@ from lxml import etree
 PROXIES = None
 
 # main uri
-MAIN_URI = 'https://96ii.net'
+MAIN_URI = 'https://96qq.net'
 
 # file
 SEEDS_LIST = './seeds_list.txt'
@@ -39,20 +39,20 @@ IMAGE_LIST = './image_list.txt'
 
 #  url链接
 URL_DICT = {
-    'luyilu': 'https://96ii.net/luyilu/list_5_{}.html',                 # 撸一撸
-    'meiyanshe': 'https://96ii.net/meiyanshe/list_13_{}.html',          # 魅妍社
-    'AISSaisi': 'https://96ii.net/AISSaisi/list_9_{}.html',             # 爱丝
-    'youguo': 'https://96ii.net/youguowang/list_3_{}.html',             # 尤果
-    'meiyuanguan': 'https://96ii.net/meiyuanguan/list_2_{}.html',       # 美媛馆
-    'tuinvlang': 'https://96ii.net/tuinvlang/list_1_{}.html',           # 推女郎
+    'luyilu': 'https://96qq.net/luyilu/list_5_{}.html',                 # 撸一撸
+    'meiyanshe': 'https://96qq.net/meiyanshe/list_13_{}.html',          # 魅妍社
+    'AISSaisi': 'https://96qq.net/AISSaisi/list_9_{}.html',             # 爱丝
+    'youguo': 'https://96qq.net/youguowang/list_3_{}.html',             # 尤果
+    'meiyuanguan': 'https://96qq.net/meiyuanguan/list_2_{}.html',       # 美媛馆
+    'tuinvlang': 'https://96qq.net/tuinvlang/list_1_{}.html',           # 推女郎
 }
 
 # referer
-REFERER = 'https://96ii.net/{}/'
+REFERER = 'https://96qq.net/{}/'
 
 # headers
 HEADERS = {
-    'Host': '96ii.net',
+    'Host': '96qq.net',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
     'accept-encoding': 'gzip, deflate',
     'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
